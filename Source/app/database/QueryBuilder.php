@@ -4,7 +4,6 @@ namespace App\App\Database;
 
 use \PDO;
 
-// A class responsible for building database queries.
 class QueryBuilder
 {
     protected $db;
@@ -36,11 +35,7 @@ class QueryBuilder
         );
         $query = $this->db->prepare($sql);
 
-        foreach ($parameters as $key => $value) {
-            $query->bindParam(":{$key}", $value);
-        }
-
-        return $query->execute();
+        return $query->execute($parameters);
     }
 
     public function delete(string $table, $id)

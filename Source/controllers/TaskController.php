@@ -17,9 +17,10 @@ class TaskController
 
     public static function store()
     {
+        // dd($_REQUEST);
         // Save the task.
         try {
-            App::get('db')->insert('tasks', ['description' => $_POST['description']]);
+            App::get('db')->insert('tasks', $_REQUEST);
         } catch (Exception $e) {
             require "views/500.php";
         }
